@@ -2,7 +2,7 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableViewControlle: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var carList: UITableView!
     

@@ -4,29 +4,29 @@ import UIKit
 import MapKit
 
 
-class FirstViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var carLocation: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         carLocation.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
-        var flag = false
+        //var flag = false
         
         //MARK: IF MAP VIEW IS FIRST VIEW
-        NotificationCenter.default.addObserver(forName: PlaceMarkersController.PLACE_MARKER_ADDED_NOTIFICATION, object: nil, queue: nil) {
-            notification in
-            let location:PlaceMarker = notification.object as! PlaceMarker
-            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.x!, location.y!)
-            //self.carLocation.setRegion(MKCoordinateRegionMakeWithDistance(coordinate, 30000, 30000), animated: true)
-            let currentCarLocationPin: CarLocationPin = CarLocationPin(title: location.name!, subTitle: location.address!, coordinate: coordinate)
-            self.carLocation.addAnnotation(currentCarLocationPin)
-            
-            if(!flag) {
-                self.carLocation.setRegion(MKCoordinateRegionMakeWithDistance(coordinate, 30000, 30000), animated: true)
-            }
-            flag = true
-        }
+//        NotificationCenter.default.addObserver(forName: PlaceMarkersController.PLACE_MARKER_ADDED_NOTIFICATION, object: nil, queue: nil) {
+//            notification in
+//            let location:PlaceMarker = notification.object as! PlaceMarker
+//            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.x!, location.y!)
+//            //self.carLocation.setRegion(MKCoordinateRegionMakeWithDistance(coordinate, 30000, 30000), animated: true)
+//            let currentCarLocationPin: CarLocationPin = CarLocationPin(title: location.name!, subTitle: location.address!, coordinate: coordinate)
+//            self.carLocation.addAnnotation(currentCarLocationPin)
+//
+//            if(!flag) {
+//                self.carLocation.setRegion(MKCoordinateRegionMakeWithDistance(coordinate, 30000, 30000), animated: true)
+//            }
+//            flag = true
+//        }
         
         //MARK: IF MAP VIEW IS SECOND VIEW
         let locations = PlaceMarkersController.sharePlaceMarkers();
